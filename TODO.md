@@ -1,0 +1,1 @@
+- Change docker-compose files to absolute paths. 
