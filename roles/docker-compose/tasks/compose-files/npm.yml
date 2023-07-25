@@ -15,8 +15,8 @@
           - '443:443'
         # - '53:53'
         volumes: 
-          - ./data:/data
-          - ./letsencrypt:/etc/letsencrypt
+          - /home/moonpie/npm/data:/data
+          - /home/moonpie/npm/letsencrypt:/etc/letsencrypt
     networks:
       default:
         external: true

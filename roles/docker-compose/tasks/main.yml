@@ -1,4 +1,6 @@
 # Will need to figure out how to include more tasks.
 # Tasks go here:
-- name: meshcentral
-  ansible.builtins.include_tasks: compose-files/meshcentral.yml
+- name: Docker compose tasks
+  ansible.builtin.include_tasks:
+    - compose-files/meshcentral.yml
+    - compose-files/npm.yml

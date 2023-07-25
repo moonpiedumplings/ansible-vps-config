@@ -1,0 +1,11 @@
+---
+- name: update the system to latest distro packages
+  ansible.builtin.apt: 
+    update-cache: yes # equivlaent of apt-get update
+    upgrade: safe # conservative, safe upprade.full/dist upgrades all packages to latest, but I will have to research the difference between the two. 
+    autoclean: yes # cleans not installed packages from the cache
+    autoremove: yes # delete uneeded dependencies
+    clean: yes # deletes all packages from the cache
+
+- name: Reboot the system
+  reboot: # However, when I tested this for my current project at my internship, it didn't work. The ssh did not reconnect. 
