@@ -3,4 +3,4 @@
 # to install a whole collection:
 
 collections: 
-- community.docker # this pulls community.docker.docker-compose
+- community.docker # this pulls community.docker.docker-compose, and it's required dependencies. 

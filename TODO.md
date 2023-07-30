@@ -1,1 +1,1 @@
-- Change docker-compose files to absolute paths. 
+- Change username to variable, so that other people can use my setup.

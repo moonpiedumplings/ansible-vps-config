@@ -1,23 +1,24 @@
-- name: Meshcentral
-  community.docker.docker-compose:
-  pull: true
-  build: always 
-  project_name: meshcentral
-  definition:
-    version: '3'
-    services:
-      app:
-        image: 'jc21/nginx-proxy-manager:latest'
-        restart: unless-stopped
-        ports:
-          - '80:80'
-          - '81:81'
-          - '443:443'
-        # - '53:53'
-        volumes: 
-          - /home/moonpie/npm/data:/data
-          - /home/moonpie/npm/letsencrypt:/etc/letsencrypt
-    networks:
-      default:
-        external: true
-        name: mine
+---
+- name: npm
+  community.docker.docker_compose:
+    pull: true
+    build: true 
+    project_name: meshcentral
+    definition:
+      version: '3'
+      services:
+        app:
+          image: 'jc21/nginx-proxy-manager:latest'
+          restart: unless-stopped
+          ports:
+            - '80:80'
+            - '81:81'
+            - '443:443'
+          # - '53:53'
+          volumes: 
+            - /home/moonpie/npm/data:/data
+            - /home/moonpie/npm/letsencrypt:/etc/letsencrypt
+      networks:
+        default:
+          external: true
+          name: mine
