@@ -3,7 +3,7 @@
   community.docker.docker_compose:
     pull: true
     build: true 
-    project_name: meshcentral
+    project_name: npm
     definition:
       version: '3'
       services:
@@ -16,8 +16,8 @@
             - '443:443'
           # - '53:53'
           volumes: 
-            - /home/moonpie/npm/data:/data
-            - /home/moonpie/npm/letsencrypt:/etc/letsencrypt
+            - /home/{{ ansible_user_id }}/npm/data:/data
+            - /home/{{ ansible_user_id }}/npm/letsencrypt:/etc/letsencrypt
       networks:
         default:
           external: true
