@@ -1,0 +1,14 @@
+---
+- name: npm
+  containers.podman.podman_container:
+    name: npm
+    image: 'docker.io/jc21/nginx-proxy-manager:latest'
+    restart_policy: on_failure
+    ports:
+      - '80:80'
+      - '81:81'
+      - '443:443'
+    volumes: 
+      - /home/{{ ansible_user_id }}/npm/data:/data
+      - /home/{{ ansible_user_id }}/npm/letsencrypt:/etc/letsencrypt
+    cmd_args: --pod main

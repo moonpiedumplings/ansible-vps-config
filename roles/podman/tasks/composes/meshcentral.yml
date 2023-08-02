@@ -1,0 +1,17 @@
+---
+- name: meshcentral
+  containers.podman.podman_container:
+    name: meshcentral 
+    image: docker.io/typhonragewind/meshcentral:latest
+    restart_policy: on_failure
+    env:
+        HOSTNAME: "officemesh.duckdns.org"     #your hostname
+        REVERSE_PROXY: "172.18.0.3"     #set to your reverse proxy IP if you want to put meshcentral behind a reverse proxy
+        REVERSE_PROXY_TLS_PORT: "443"
+        IFRAME: "false"    #set to true if you wish to enable iframe support
+        ALLOW_NEW_ACCOUNTS: "true"    #set to false if you want disable self-service creation of new accounts besides the first (admin)
+        WEBRTC: "false"  #set to true to enable WebRTC - per documentation it is not officially released with meshcentral, but is solid enough to work with. Use with caution
+    volumes:
+        - /home/{{ ansible_user_id }}/meshcentral/meshcentral/data:/opt/meshcentral/meshcentral-data    #config.json and other important files live here. A must for data persistence
+        - /home/{{ ansible_user_id }}/meshcentral/meshcentral/user_files:/opt/meshcentral/meshcentral-files    #where file uploads for users live
+    cmd_args: --pod main
